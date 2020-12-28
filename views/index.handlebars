@@ -11,50 +11,24 @@
 
       </div>
     </div>
-    <div class="items-wrap">
+    <div class="records-wrap">
       <div class="col-12">
-        <div class="row bg-light p-2">
-          <div class="col-md-9 d-flex">
-            <i class="fas fa-home pr-3"></i>
-            <div class="w-75 d-flex flex-column pr-3">
-              <div class="pr-2 pl-2">Movies: Avengers</div>
-              <div class="pr-2 pl-2 small">2020/12/25</div>
+        {{#each records}}
+          <div class="row p-2 record bg-light">
+            <div class="col-md-9 d-flex">
+              <i class="fas fa-home pr-3"></i>
+              <div class="w-75 d-flex flex-column pr-3">
+                <div class="pr-2 pl-2">{{ this.name }}</div>
+                <div class="pr-2 pl-2 small">{{ this.date }}</div>
+              </div>
+              <div class="pr-3 align-self-center">${{ this.amount }}</div>
             </div>
-            <div class="pr-3 align-self-center">$250</div>
-          </div>
-          <div class="col-3">
-            <button class="btn btn-warning btn-lg">修改</button>
-            <button class="btn btn-danger btn-lg">刪除</button>
-          </div>
-        </div>
-        <div class="row bg-secondary p-2">
-          <div class="col-md-9 d-flex">
-            <i class="fas fa-home pr-3"></i>
-            <div class="w-75 d-flex flex-column pr-3">
-              <div class="pr-2 pl-2">Movies: Avengers</div>
-              <div class="pr-2 pl-2 small">2020/12/25</div>
+            <div class="col-3">
+              <button class="btn btn-warning btn-lg">修改</button>
+              <button class="btn btn-danger btn-lg">刪除</button>
             </div>
-            <div class="pr-3 align-self-center">$250</div>
           </div>
-          <div class="col-3">
-            <button class="btn btn-warning btn-lg">修改</button>
-            <button class="btn btn-danger btn-lg">刪除</button>
-          </div>
-        </div>
-        <div class="row bg-light p-2">
-          <div class="col-md-9 d-flex">
-            <i class="fas fa-home pr-3"></i>
-            <div class="w-75 d-flex flex-column pr-3">
-              <div class="pr-2 pl-2">Movies: Avengers</div>
-              <div class="pr-2 pl-2 small">2020/12/25</div>
-            </div>
-            <div class="pr-3 align-self-center">$250</div>
-          </div>
-          <div class="col-3">
-            <button class="btn btn-warning btn-lg">修改</button>
-            <button class="btn btn-danger btn-lg">刪除</button>
-          </div>
-        </div>
+        {{/each}}
       </div>
     </div>
     <hr class="my-4">
