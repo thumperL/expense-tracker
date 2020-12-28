@@ -1,13 +1,16 @@
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
+
 const recordSchema = new Schema({
   name: {
     type: String,
     required: true,
   },
   category: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: 'Category',
+    index: true,
     required: true,
   },
   date: {
