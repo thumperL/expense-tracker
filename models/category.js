@@ -6,7 +6,7 @@ const categorySchema = new Schema({
     type: String,
     required: true,
   },
-  iconURI: {
+  icon: {
     type: String,
   },
 });
