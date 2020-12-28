@@ -1,2 +1,67 @@
 <!-- ./view/index.handlebars -->
-<h1>This will be a expense tracker.</h1>
+<div id="mainContent" class="container">
+  <div class="jumbotron">
+    {{!-- <h1 class="display-3">總金額</h1> --}}
+    <div class="row">
+      <div class="col-9 totalAmount-wrap">
+        <h2 class="mr-5 mt-1">總金額</h2>
+        <span id="totalAmount" class="display-3">12341234</span>
+      </div>
+      <div class="col-3">
+
+      </div>
+    </div>
+    <div class="items-wrap">
+      <div class="col-12">
+        <div class="row bg-light p-2">
+          <div class="col-md-9 d-flex">
+            <i class="fas fa-home pr-3"></i>
+            <div class="w-75 d-flex flex-column pr-3">
+              <div class="pr-2 pl-2">Movies: Avengers</div>
+              <div class="pr-2 pl-2 small">2020/12/25</div>
+            </div>
+            <div class="pr-3 align-self-center">$250</div>
+          </div>
+          <div class="col-3">
+            <button class="btn btn-warning btn-lg">修改</button>
+            <button class="btn btn-danger btn-lg">刪除</button>
+          </div>
+        </div>
+        <div class="row bg-secondary p-2">
+          <div class="col-md-9 d-flex">
+            <i class="fas fa-home pr-3"></i>
+            <div class="w-75 d-flex flex-column pr-3">
+              <div class="pr-2 pl-2">Movies: Avengers</div>
+              <div class="pr-2 pl-2 small">2020/12/25</div>
+            </div>
+            <div class="pr-3 align-self-center">$250</div>
+          </div>
+          <div class="col-3">
+            <button class="btn btn-warning btn-lg">修改</button>
+            <button class="btn btn-danger btn-lg">刪除</button>
+          </div>
+        </div>
+        <div class="row bg-light p-2">
+          <div class="col-md-9 d-flex">
+            <i class="fas fa-home pr-3"></i>
+            <div class="w-75 d-flex flex-column pr-3">
+              <div class="pr-2 pl-2">Movies: Avengers</div>
+              <div class="pr-2 pl-2 small">2020/12/25</div>
+            </div>
+            <div class="pr-3 align-self-center">$250</div>
+          </div>
+          <div class="col-3">
+            <button class="btn btn-warning btn-lg">修改</button>
+            <button class="btn btn-danger btn-lg">刪除</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="my-4">
+    <p class="text-center">
+      <a class="btn btn-success btn-lg" href="/restaurants/new" role="button">新增支出</a>
+    </p>
+  </div>
+
+
+</div>
