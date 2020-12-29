@@ -37,4 +37,14 @@ $(() => {
       });
     });
   }
+
+  // Delete confirmation
+  document.querySelector('.btn-delete').addEventListener('click', (event) => {
+    if (confirm('確定要刪除這筆支出？') !== true) {
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    }
+    return true;
+  });
 });
