@@ -23,12 +23,16 @@ router.get('/', (req, res) => {
       .lean()
       .sort({ date: 'desc' })
       .then((records) => {
+        let totalAmount = 0;
         records.map((record) => {
           // Set to first accepted language Locale
           record.date = new Date(record.date).toISOString().slice(0, 10);
+          // Get sum
+          totalAmount += parseFloat(record.amount);
         });
+
         res.render('index', {
-          categories, records,
+          categories, records, totalAmount,
         });
       })
       .catch((error) => console.error(error));
