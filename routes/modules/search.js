@@ -1,0 +1,33 @@
+// 引用 Express 與 Express 路由器
+const express = require('express');
+
+const router = express.Router();
+// 引用 Todo model
+const Record = require('../../models/record');
+
+// 定義 search 路由
+router.get('/', (req, res) => {
+  const { keyword } = req.query;
+  const regex = new RegExp(keyword, 'i'); // Have to use RegExp builder to build the if contains string filtering
+  // search based on name, name_en, category, and location
+  Record.find({
+    $or: [
+      { name: { $regex: regex } },
+      { amount: { $regex: regex } },
+    ],
+  })
+    .lean()
+    .sort({ date: 'desc' })
+    .then((records) => {
+      records.map((record) => {
+        const recordDate = new Date(record.date);
+        // Set to first accepted language Locale
+        record.date = recordDate.toLocaleDateString(req.headers['accept-language'].split(';')[0].split(',')[0]);
+      });
+      res.render('index', { records, keyword });
+    })
+    .catch((error) => console.error(error));
+});
+
+// 匯出路由模組
+module.exports = router;
