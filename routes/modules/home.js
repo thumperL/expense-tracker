@@ -17,12 +17,13 @@ router.get('/', (req, res) => {
 
   Promise.all(promise).then((categoryList) => {
     const [categories] = [...categoryList];
-    Record.find()
+    return Record.find()
       .lean()
       .then((records) => {
         records.map((record) => {
           const recordDate = new Date(record.date);
-          record.date = recordDate.toLocaleDateString('en-CA');
+          // Set to first accepted language Locale
+          record.date = recordDate.toLocaleDateString(req.headers['accept-language'].split(';')[0].split(',')[0]);
         });
         res.render('index', {
           categories, records,
