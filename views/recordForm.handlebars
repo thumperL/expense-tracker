@@ -1,0 +1,34 @@
+<form action="/records{{#if recordData._id}}/{{ recordData._id }}?_method=PUT{{/if}}" method="POST" class="container mt-5 mb-4">
+  {{!-- {{#if error}}
+    <div class="alert alert-danger" role="alert">
+      {{#each error}}
+        {{this}}
+      {{/each}}
+    </div>
+  {{/if}} --}}
+  <div class="form-group">
+    <label for="name">名稱</label>
+    <input type="text" class="form-control" placeholder="名稱" name="name" required{{#if recordData.name}} value="{{recordData.name}}"{{/if}}>
+  </div>
+  <div class="form-group">
+    <label for="name_en">日期</label>
+    <input type="date" class="form-control" placeholder="日期" name="date" required{{#if recordData.date}} value="{{recordData.date}}"{{/if}}>
+  </div>
+  
+  <div class="form-group">
+    <label for="category">類別</label>  
+    <select class="form-control" id="categorySelect">
+      <option selected disabled>Choose...</option>
+      {{#each categoryData}}
+        <option value="{{ this._id }}">{{ this.name }}</option>
+      {{/each}}
+    </select>
+    <input type="hidden" name="category" required{{#if recordData.category}} value="{{recordData.category}}"{{/if}}>
+  </div>
+  <div class="form-group">
+    <label for="image">金額</label>
+    <input type="number" min="0.00" step="0.01" class="form-control" placeholder="金額" name="amount" required{{#if recordData.amount}} value="{{recordData.amount}}"{{/if}}>
+  </div>
+  <button type="submit" class="btn btn-success">新增支出</button>
+  <a href="/" class="btn btn-danger">back</a>
+</form>
