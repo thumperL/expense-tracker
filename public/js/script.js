@@ -8,7 +8,7 @@ $(() => {
   });
 
   // Set selected for pre-defined option for category in edit/new
-  if (document.querySelector('input[name=category]') !== null) {
+  if ((document.querySelector('input[name=category]') !== null && document.querySelector('input[name=category]').value !== '')) {
     const defaultCategoryId = document.querySelector('input[name=category]').value;
     document.querySelector(`#categorySelect option[value="${defaultCategoryId}"]`).setAttribute('selected', true);
   }
