@@ -45,8 +45,7 @@ router.get('/:recordId/edit', (req, res) => {
     Record.findById(recordId)
       .lean()
       .then((records) => {
-        const recordDate = new Date(records.date);
-        records.date = recordDate.toLocaleDateString('en-CA');
+        records.date = new Date(records.date).toISOString().slice(0, 10);
         return records;
       })
       .catch((error) => console.log(error)),

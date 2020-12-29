@@ -24,9 +24,8 @@ router.get('/', (req, res) => {
       .sort({ date: 'desc' })
       .then((records) => {
         records.map((record) => {
-          const recordDate = new Date(record.date);
           // Set to first accepted language Locale
-          record.date = recordDate.toLocaleDateString(req.headers['accept-language'].split(';')[0].split(',')[0]);
+          record.date = new Date(record.date).toISOString().slice(0, 10);
         });
         res.render('index', {
           categories, records,
