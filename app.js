@@ -9,7 +9,7 @@ const routes = require('./routes'); // 引用路由器
 require('./config/mongoose');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // serving static files
 app.use(express.static('public'));
