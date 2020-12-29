@@ -1,11 +1,4 @@
 <form action="/records{{#if recordData._id}}/{{ recordData._id }}?_method=PUT{{/if}}" method="POST" class="container mt-5 mb-4">
-  {{!-- {{#if error}}
-    <div class="alert alert-danger" role="alert">
-      {{#each error}}
-        {{this}}
-      {{/each}}
-    </div>
-  {{/if}} --}}
   <div class="form-group">
     <label for="name">名稱</label>
     <input type="text" class="form-control" placeholder="名稱" name="name" required{{#if recordData.name}} value="{{recordData.name}}"{{/if}}>
@@ -17,7 +10,7 @@
   
   <div class="form-group">
     <label for="category">類別</label>  
-    <select class="form-control" id="categorySelect">
+    <select class="form-control" id="categorySelect" required>
       <option selected disabled>Choose...</option>
       {{#each categoryData}}
         <option value="{{ this._id }}">{{ this.name }}</option>

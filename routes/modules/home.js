@@ -7,6 +7,8 @@ const router = express.Router();
 
 // 定義首頁路由
 router.get('/', (req, res) => {
+  const category = (req.query.recordFilterCategory === undefined) ? {} : { category: req.query.recordFilterCategory };
+
   const promise = [];
   promise.push(
     Category.find()
@@ -17,7 +19,7 @@ router.get('/', (req, res) => {
 
   Promise.all(promise).then((categoryList) => {
     const [categories] = [...categoryList];
-    return Record.find()
+    return Record.find(category)
       .lean()
       .sort({ date: 'desc' })
       .then((records) => {
