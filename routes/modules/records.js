@@ -7,6 +7,33 @@ const router = express.Router();
 const Category = require('../../models/category');
 const Record = require('../../models/record');
 
+// CREATE Operation
+router.get('/new', (req, res) => {
+  Category.find()
+    .lean()
+    .then((categoryData) => res.render('recordForm', { categoryData }))
+    .catch((error) => console.log(error));
+});
+router.post('/', (req, res) => {
+  // The the posted name
+  const { name } = req.body;
+  const { date } = req.body;
+  const { amount } = req.body;
+  const { category } = req.body;
+
+  // Created the instance
+  const records = new Record({
+    name,
+    date,
+    amount,
+    category,
+  });
+
+  return records.save()
+    .then(() => res.redirect('/'))
+    .catch((error) => console.error(error));
+});
+
 // UPDATE operation
 router.get('/:recordId/edit', (req, res) => {
   const { recordId } = req.params;
@@ -62,3 +89,20 @@ router.delete('/:recordId', (req, res) => {
 
 // 匯出路由模組
 module.exports = router;
+
+/**
+
+// 定義 restaurants 路由
+
+// READ restaurant info
+router.get('/:recordId', (req, res) => {
+  const { recordId } = req.params;
+  return restaurant.findById(recordId)
+    .lean()
+    .then((restaurants) => {
+      res.render('showmore', { restaurants });
+    })
+    .catch((error) => console.log(error));
+});
+
+* */

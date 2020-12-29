@@ -19,6 +19,7 @@ router.get('/', (req, res) => {
     const [categories] = [...categoryList];
     return Record.find()
       .lean()
+      .sort({ date: 'desc' })
       .then((records) => {
         records.map((record) => {
           const recordDate = new Date(record.date);
