@@ -25,6 +25,9 @@
             </div>
             <div class="col-3">
               <a class="btn btn-warning btn-lg" href="/records/{{ this._id }}/edit">修改</a>
+              <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+                <button class="btn btn-danger btn-lg" data-toggle="tooltip" data-placement="bottom" title="Delete the record" type="submit">刪除</button>
+              </form>
             </div>
           </div>
         {{/each}}
@@ -32,7 +35,7 @@
     </div>
     <hr class="my-4">
     <p class="text-center">
-      <a class="btn btn-success btn-lg" href="/restaurants/new" role="button">新增支出</a>
+      <a class="btn btn-success btn-lg" href="/records/new" role="button">新增支出</a>
     </p>
   </div>
 

@@ -51,5 +51,14 @@ router.put('/:recordId', (req, res) => {
     .catch((error) => console.log(error));
 });
 
+// DELETE operation
+router.delete('/:recordId', (req, res) => {
+  const { recordId } = req.params;
+  return Record.findById(recordId)
+    .then((records) => records.remove())
+    .then(() => res.redirect('/'))
+    .catch((error) => console.log(error));
+});
+
 // 匯出路由模組
 module.exports = router;
