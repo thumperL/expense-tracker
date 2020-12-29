@@ -21,6 +21,8 @@ router.post('/', (req, res) => {
   const { amount } = req.body;
   const { category } = req.body;
 
+  console.log('category', category);
+
   // Created the instance
   const records = new Record({
     name,
