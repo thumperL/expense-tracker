@@ -25,45 +25,6 @@
     <div class="banner"></div>
   </header>
 
-  <!-- search bar -->
-  <div id="utilityContent" class="container search-bar sort-box d-flex justify-content-between align-items-center mt-3 mb-3">
-    <div class="search-bar-outer w-50">
-      <div class="search-bar-inner">
-        <form action="/">
-          <div class="input-group">
-            <input type="text" name="keyword" class="form-control" placeholder="搜尋支出 (名稱、店家、或是金額)" aria-label="Expense..."
-              value="{{ keyword }}" aria-describedby="search-button">
-            <div class="input-group-append">
-              <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div>
-      <div class="dropdown show expenseFilterMonth" style="display: inline-block;">
-        <a class="btn btn-outline-primary btn-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          月份
-        </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          {{#each months}}
-            <div class="dropdown-item" data-month="{{ this }}">{{ this }}</div>
-          {{/each}}
-        </div>
-      </div>
-      <div class="dropdown show expenseFilter" style="display: inline-block;">
-        <a class="btn btn-outline-primary btn-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          支出類別
-        </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          {{#each categories}}
-            <div class="dropdown-item" data-categoryId="{{ this._id }}">{{ this.name }} {{{ this.icon }}}</div>
-          {{/each}}
-        </div>
-      </div>
-    </div>
-  </div>
-  
   <!-- main area -->
   {{{ body }}}
 
