@@ -31,6 +31,11 @@ app.use(bodyParser.urlencoded({
 // 設定每一筆請求都會透過 methodOverride 進行前置處理
 app.use(methodOverride('_method'));
 usePassport(app);
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated();
+  res.locals.user = req.user;
+  next();
+});
 // Route to handle routing
 app.use(routes);
 

@@ -51,6 +51,8 @@ router.get('/', (req, res) => {
     const categoryList = filterList[0];
     const months = filterList[1];
     const categories = [...categoryList];
+    const userId = req.user._id;
+    Object.assign(searchQuery, { userId });
 
     return Record.find(searchQuery)
       .lean()

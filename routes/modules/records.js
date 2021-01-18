@@ -15,6 +15,7 @@ router.get('/new', (req, res) => {
     .catch((error) => console.log(error));
 });
 router.post('/', (req, res) => {
+  const userId = req.user._id;
   // The the posted name
   const { name } = req.body;
   const { merchant } = req.body;
@@ -29,6 +30,7 @@ router.post('/', (req, res) => {
     date,
     amount,
     category,
+    userId,
   });
 
   return records.save()
@@ -38,11 +40,12 @@ router.post('/', (req, res) => {
 
 // UPDATE operation
 router.get('/:recordId/edit', (req, res) => {
-  const { recordId } = req.params;
+  const userId = req.user._id;
+  const _id = req.params.recordId;
   const promise = [];
 
   promise.push(
-    Record.findById(recordId)
+    Record.findOne({ _id, userId })
       .lean()
       .then((records) => {
         records.date = new Date(records.date).toISOString().slice(0, 10);
@@ -60,14 +63,15 @@ router.get('/:recordId/edit', (req, res) => {
   });
 });
 router.put('/:recordId', (req, res) => {
-  const { recordId } = req.params;
+  const userId = req.user._id;
+  const _id = req.params.recordId;
   const { name } = req.body;
   const { merchant } = req.body;
   const { date } = req.body;
   const { amount } = req.body;
   const { category } = req.body;
 
-  return Record.findById(recordId)
+  return Record.findOne({ _id, userId })
     .then((record) => {
       record.name = name;
       record.merchant = merchant;
@@ -83,8 +87,9 @@ router.put('/:recordId', (req, res) => {
 
 // DELETE operation
 router.delete('/:recordId', (req, res) => {
-  const { recordId } = req.params;
-  return Record.findById(recordId)
+  const userId = req.user._id;
+  const _id = req.params.recordId;
+  return Record.findOne({ _id, userId })
     .then((records) => records.remove())
     .then(() => res.redirect('/'))
     .catch((error) => console.log(error));
