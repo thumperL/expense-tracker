@@ -36,6 +36,20 @@ $(() => {
         window.location.search = searchParams.toString();
       });
     });
+    document.querySelectorAll('.expenseFilterMonth .dropdown-menu .dropdown-item').forEach((item) => {
+      const searchParams = new URLSearchParams(window.location.search);
+
+      // Set selected sorting option
+      if (item.dataset.month === searchParams.get('recordFilterMonth')) {
+        item.classList.add('active');
+      }
+
+      // Hook click event for page reload
+      item.addEventListener('click', (event) => {
+        searchParams.set('recordFilterMonth', item.dataset.month);
+        window.location.search = searchParams.toString();
+      });
+    });
   }
 
   // Delete confirmation
