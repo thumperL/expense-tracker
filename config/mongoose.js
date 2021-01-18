@@ -1,7 +1,13 @@
 const mongoose = require('mongoose');
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 // Default connection path
 const { MONGODB_URI } = process.env;
+
+console.log('MONGODB_URI', MONGODB_URI);
 
 // MongoDB Connection
 mongoose.connect(MONGODB_URI, {
@@ -12,6 +18,11 @@ mongoose.connect(MONGODB_URI, {
 const db = mongoose.connection;
 
 // Error Handling
-db.on('error', console.error.bind(console, 'MongoDb Atlas [expense-tracker] cluster0 connection error'));
+db.on('error', () => {
+  console.log('DB Connection FAIL');
+});
+db.once('open', () => {
+  console.log('DB Connection SUCCESS');
+});
 
 module.exports = db;
