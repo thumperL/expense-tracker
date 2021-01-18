@@ -26,6 +26,6 @@
     <label for="image">金額</label>
     <input type="number" min="0.00" step="0.01" class="form-control" placeholder="金額" name="amount" required{{#if recordData.amount}} value="{{recordData.amount}}"{{/if}}>
   </div>
-  <button type="submit" class="btn btn-success">新增支出</button>
+  <button type="submit" class="btn btn-success">{{#if recordData._id}}修改{{else}}新增{{/if}}支出</button>
   <a href="/" class="btn btn-danger">back</a>
 </form>

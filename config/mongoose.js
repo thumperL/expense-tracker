@@ -7,8 +7,6 @@ if (process.env.NODE_ENV !== 'production') {
 // Default connection path
 const { MONGODB_URI } = process.env;
 
-console.log('MONGODB_URI', MONGODB_URI);
-
 // MongoDB Connection
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
