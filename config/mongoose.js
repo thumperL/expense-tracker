@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
 
 // Default connection path
-const connectionRemote = process.env.MONGODB_URI || 'mongodb://localhost/expense-tracker';
-console.log(connectionRemote);
+const { MONGODB_URI } = process.env;
 
 // MongoDB Connection
-mongoose.connect(connectionRemote, {
+mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,

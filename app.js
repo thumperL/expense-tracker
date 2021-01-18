@@ -1,5 +1,8 @@
 // app.js
 // require packages used in the project
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
@@ -12,7 +15,7 @@ const usePassport = require('./config/passport');
 require('./config/mongoose');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 // serving static files
 app.use(express.static('public'));
@@ -22,7 +25,7 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
 }));
