@@ -17,15 +17,15 @@ router.get('/new', (req, res) => {
 router.post('/', (req, res) => {
   // The the posted name
   const { name } = req.body;
+  const { merchant } = req.body;
   const { date } = req.body;
   const { amount } = req.body;
   const { category } = req.body;
 
-  console.log('category', category);
-
   // Created the instance
   const records = new Record({
     name,
+    merchant,
     date,
     amount,
     category,
@@ -62,6 +62,7 @@ router.get('/:recordId/edit', (req, res) => {
 router.put('/:recordId', (req, res) => {
   const { recordId } = req.params;
   const { name } = req.body;
+  const { merchant } = req.body;
   const { date } = req.body;
   const { amount } = req.body;
   const { category } = req.body;
@@ -69,6 +70,7 @@ router.put('/:recordId', (req, res) => {
   return Record.findById(recordId)
     .then((record) => {
       record.name = name;
+      record.merchant = merchant;
       record.date = date;
       record.amount = amount;
       record.category = category;

@@ -7,6 +7,10 @@ const recordSchema = new Schema({
     type: String,
     required: true,
   },
+  merchant: {
+    type: String,
+    required: true,
+  },
   category: {
     type: Schema.Types.ObjectId,
     ref: 'Category',
